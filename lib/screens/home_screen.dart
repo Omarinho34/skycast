@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/cities_provider.dart';
+import 'add_city_screen.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -36,18 +37,11 @@ class HomeScreen extends ConsumerWidget {
 
       // Bouton de test : ajoute une ville en dur pour valider toute la chaîne
       floatingActionButton: FloatingActionButton(
-        onPressed: () async {
-          try {
-            // ref.read dans un callback (pas ref.watch !) -> on appelle la méthode
-            await ref.read(citiesProvider.notifier).addCity('Tokyo');
-          } catch (e) {
-            // Affiche l'erreur de l'API (ville introuvable, réseau...)
-            if (context.mounted) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(content: Text('Erreur : $e')),
-              );
-            }
-          }
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const AddCityScreen()),
+          );
         },
         child: const Icon(Icons.add),
       ),
