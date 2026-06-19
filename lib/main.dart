@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'services/api_service.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'screens/home_screen.dart';
+import 'theme/app_theme.dart';
 
 void main() {
   runApp(
@@ -20,7 +20,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'SkyCast',
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+      theme: AppTheme.light(),
+      home: const HomeScreen(),
     );
   }
 }
