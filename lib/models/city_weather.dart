@@ -30,4 +30,12 @@ class CityWeather {
       'fetchedAt': fetchedAt.toIso8601String(),
     };
   }
+
+  factory CityWeather.fromJson(Map<String, dynamic> json) {
+    return CityWeather(
+      cityName: json['cityName'],
+      weather: Weather.fromJson(json['weather']),
+      fetchedAt: DateTime.parse(json['fetchedAt']),
+    );
+  }
 }
